@@ -63,16 +63,54 @@ class Tweet {
         if (this.source != 'completed_event') {
             return "unknown";
         }
-        //TODO: parse the activity type from the text of the tweet
-        return "";
+
+        // remove beginning part of tweet
+        let rest = this.text;
+        const prefixes = ['Just completed an ', 'Just completed a ', 'Just posted an ', 'Just posted a '];
+        for (const prefix of prefixes) {
+            if (rest.startsWith(prefix)) {
+                rest = rest.substring(prefix.length);
+                break;
+            }
+        }
+
+        // if a distance comes first, skip the number and unit
+        const words = rest.split(' ');
+        if (words[1] === 'km' || words[1] === 'mi') {
+            rest = words.slice(2).join(' ');
+        }
+
+        //activity ends at " with", " - " or " in "
+        let endIndex = rest.length;
+        for (const marker of [' with', ' - ', ' in ']) {
+            const index = rest.indexOf(marker);
+            if (index !== -1 && index < endIndex) {
+                endIndex = index;
+            }
+        }
+
+        return rest.substring(0, endIndex); 
     }
 
     get distance():number {
         if(this.source != 'completed_event') {
             return 0;
         }
-        //TODO: prase the distance from the text of the tweet
-        return 0;
+
+        // find unit
+        const words = this.text.split(' ');
+        const value = parseFloat(words[3]);
+
+        // if unit is km, convert, otherwise return distance
+        if (words[4] === 'km') {
+            return value / 1.609;   
+        }
+        if (words[4] === 'mi') {
+            return value;
+        }
+
+        // time-based activities have no distance
+        return 0;   
     }
 
     getHTMLTableRow(rowNumber:number):string {
