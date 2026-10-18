@@ -60,7 +60,21 @@ function parseTweets(runkeeper_tweets) {
 			span.innerText = pct;
 		}
 	}
-	
+
+	//calculate user written tweets 
+	const completedTweets = tweet_array.filter(t => t.source === 'completed_event');
+	const writtenCount = completedTweets.filter(t => t.written).length;
+	const writtenPct = math.format(100 * writtenCount / completedTweets.length, { notation: 'fixed', precision: 2 }) + '%';
+
+	//update user written tweets html spans
+	for (const span of document.getElementsByClassName('written')) {
+	span.innerText = writtenCount;
+		}
+
+	for (const span of document.getElementsByClassName('writtenPct')) {
+		span.innerText = writtenPct;
+		}
+
 }
 
 //Wait for the DOM to load
