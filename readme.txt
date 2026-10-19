@@ -39,7 +39,7 @@ Nothing special is needed to run my code. Below are design decisions I made thro
 achievement = starts with "Achieved"/"I just set a goal"; else miscellaneous. Result: 7,982 completed (96.79%), 141 live (1.71%), 
 61 achievements (0.74%), 63 miscellaneous (0.76%).
 - Written tweets: text after " - " once the link and #RunKeeper are removed. "TomTom MySports Watch" (a default) and empty text do not count. 
-Result: 1,645 (20.61%), below the paper's ~25%, because I kept the definition strict.
+Result: 1,645 (20.61%), below the paper's ~25% but still within the +/-5% gap, because I kept the definition strict.
 - Activity type: I remove the starting phrase (including the "an" versions), skip any distance, and read up to " with", " - " or " in ". 
 This also names time-based activities (31 types, no "unknown" bar). "activity" is a real RunKeeper label, so I kept it. 
 Distance: km converted to miles (1 mi = 1.609 km); time-based activities = 0.
