@@ -21,7 +21,7 @@ W3Schools JavaScript tutorials (w3schools.com/js and w3schools.com/jsref) were a
 - Getters in classes
 
 I also used Claude throughout the assignment. I asked it to:
-- Explain what individual lines of code do
+- Explain what individual lines of code do and how they work
 - Help me debug problems (for example, I edited the generated js/tweet.js by mistake and had to move my changes into ts/tweet.ts, and the page showed zeros because the TypeScript was not recompiled)
 - Check candidate parsing rules against data/saved_tweets.json
 I implemented, tested, and edited the suggested code myself in my own repository.
@@ -51,4 +51,3 @@ block in JavaScript so the chart stays below the button (Vega-Embed makes them i
 - Search is case-insensitive and only searches the written text (writtenText), because "run" and "Runkeeper" 
 appear in nearly every tweet. The table updates on every input event and clears when the box is empty. Links are made clickable in getHTMLTableRow.
 - No bonus feature.
-
